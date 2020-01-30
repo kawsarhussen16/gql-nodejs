@@ -1,0 +1,29 @@
+{
+  "name": "gql-nodejs",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/kawsarhussen16/gql-nodejs.git",
+  "author": "Kawsar Hussen <kawsarhussen@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "nodemon server.js",
+    "client": "cd client && yarn start",
+    "dev": "concurrently --names \"server,client\" \"yarn server --silent\" \"yarn client --silent\""
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.9.16",
+    "bcrypt": "^3.0.7",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^14.6.0",
+    "graphql-tool": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.5"
+  }
+}
