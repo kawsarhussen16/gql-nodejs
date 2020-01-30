@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config({ path : 'variable.env'})
@@ -10,6 +11,11 @@ const User = require("./models/user.js");
 const {typeDefs} = require("./schema");
 const {resolvers}  = require('./resolvers'); 
 
+const corsOptions = {
+    origin : "http://localhost:3000",
+    credentials: true
+};
+app.use(cors(corsOptions))
 
 //Create Schema
 const schema = makeExecutableSchema({
