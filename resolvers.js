@@ -1,33 +1,51 @@
-const jwt = require('jsonwebtoken');
-const createToken = (user, secret, expiresIn) =>{
-    const {username, email} = user
-    return jwt.sign({username, email}, secret, {expiresIn})
-}
-
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const createToken = (user, secret, expiresIn) => {
+    const { username, email } = user;
+    return jwt.sign({ username, email }, secret, { expiresIn });
+};
 
 exports.resolvers = {
-    Query : {
-        getAllRecipes: async(root, args, {Recipe}) => {
+    Query: {
+        getAllRecipes: async (root, args, { Recipe }) => {
             const allRecipe = await Recipe.find();
             return allRecipe;
         }
     },
 
     Mutation: {
-        addRecipe: async (root, {name, description, category, instructions, username},{Recipe}  ) => {
+        addRecipe: async (
+            root,
+            { name, description, category, instructions, username },
+            { Recipe }
+        ) => {
             const newRecipe = await new Recipe({
-                name, description, category, instructions, username
+                name,
+                description,
+                category,
+                instructions,
+                username
             }).save();
-        
-        return newRecipe;
-        }
-    ,
 
-        signupUser: async (root,{username, email, password}, {User})=> {
-            const user = await User.findOne({username: username})
-            if(user){
-                throw new Error('Username already exists');
+            return newRecipe;
+        },
 
+        signinUser: async (root, { username, password }, { User }) => {
+            const user = await User.findOne({ username });
+            if (!user) {
+                throw new Error("User Not Found");
+            }
+            const isValidPassword = await bcrypt.compare(password, user.password);
+            if (!isValidPassword) {
+                throw new Error("Invalid password");
+            }
+            return { token: createToken(user, process.env.SECRET, "1hr") };
+        },
+
+        signupUser: async (root, { username, email, password }, { User }) => {
+            const user = await User.findOne({ username: username });
+            if (user) {
+                throw new Error("Username already exists");
             }
             const newUser = await new User({
                 username,
@@ -35,9 +53,7 @@ exports.resolvers = {
                 password
             }).save();
 
-            return {token : createToken(newUser, process.env.SECRET, '1hr')}
-
+            return { token: createToken(newUser, process.env.SECRET, "1hr") };
         }
     }
-
-}
+};
