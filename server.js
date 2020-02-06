@@ -17,36 +17,53 @@ const corsOptions = {
     credentials: true
 };
 app.use(cors(corsOptions));
+
 //Set up JWT authentication middleware
 
-app.use(async (req, res, next) => {
-    const token = req.headers["authorization"];
-    console.log(token);
+// app.use(async (req, res, next) => {
+//     const token = req.headers["authorization"];
+//     if (token !== "null") {
+//         try {
+//             const currentUser = await jwt.verify(token, process.env.SECRET);
+//             req.currentUser = currentUser;
+//         } catch (err) {
+//             console.log(err);
+//         }
+//     }
+//     next();
+// });
+/////// or Using getUser method
+const getUser = (token) => {
+    let currentUser;
     if (token !== "null") {
         try {
-            const currentUser = await jwt.verify(token, process.env.SECRET);
-            console.log(currentUser);
+            currentUser = jwt.verify(token, process.env.SECRET);
         } catch (err) {
             console.log(err);
         }
     }
-    next();
-});
+    return currentUser;
+};
 
-//Create Schema
-const schema = makeExecutableSchema({
-    typeDefs,
-    resolvers
-});
+//Create Schema/// old style
+// const schema = makeExecutableSchema({
+//     typeDefs,
+//     resolvers
+// });
 
 //connect schemas with graphql
 const server = new ApolloServer({
-    schema,
-    context: {
-        Recipe,
-        User
+    //schema, //old style
+    typeDefs,
+    resolvers,
+    context: ({ req }) => {
+        const token = req.headers.authorization || "";
+        const currentUser = getUser(token);
+        // const currentUser = req.currentUser;
+        return { User, currentUser, Recipe };
     }
 });
+
 const path = "/graphql";
 
 app.use(bodyParser.json());

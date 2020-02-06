@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { SIGNUP_USER } from "../../queries/index";
 import Error from "./Error.js";
+import { withRouter } from "react-router-dom";
 const initialState = {
     username: "",
     email: "",
     password: "",
     confirmPassword: ""
 };
-export default class Signup extends Component {
+
+class Signup extends Component {
     state = { ...initialState };
     clearState = () => {
         this.setState({ ...initialState });
@@ -19,10 +21,11 @@ export default class Signup extends Component {
     };
     handleSubmit = (e, signupUser) => {
         e.preventDefault();
-        signupUser().then((data) => {
+        signupUser().then(({ data }) => {
             console.log(data);
             localStorage.setItem("token", data.data.signupUser.token);
             this.clearState();
+            this.props.history.push("/signin");
         });
     };
     validateForm = () => {
@@ -88,3 +91,5 @@ export default class Signup extends Component {
         );
     }
 }
+
+export default withRouter(Signup);

@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import { Mutation } from "react-apollo";
 import { SIGNIN_USER } from "../../queries/index";
 import Error from "./Error.js";
-
+import { withRouter } from "react-router-dom";
 const initialState = {
     username: "",
     password: ""
 };
-
-export default class Signin extends Component {
+class Signin extends Component {
     state = { ...initialState };
     clearState = () => {
         this.setState({ ...initialState });
@@ -22,6 +21,7 @@ export default class Signin extends Component {
         signinUser().then((data) => {
             localStorage.setItem("token", data.data.signinUser.token);
             this.clearState();
+            this.props.history.push("/");
         });
     };
     validateForm = () => {
@@ -34,7 +34,7 @@ export default class Signin extends Component {
         const { username, password } = this.state;
         return (
             <div className="App">
-                <h2 className="App"> Sign Up </h2>{" "}
+                <h2 className="App"> Sign In </h2>{" "}
                 <Mutation mutation={SIGNIN_USER} variables={{ username, password }}>
                     {(signinUser, { data, loading, error }) => {
                         return (
@@ -71,3 +71,5 @@ export default class Signin extends Component {
         );
     }
 }
+
+export default withRouter(Signin);
