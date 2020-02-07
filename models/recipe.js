@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const RecipeSchema = new Schema({
@@ -28,10 +28,12 @@ const RecipeSchema = new Schema({
         default: 0
     },
     username: {
-        type: String,
-    },
+        type: String
+    }
+});
 
-})
+RecipeSchema.index({
+    "$**": "text"
+});
 
-
-module.exports = mongoose.model('Recipe', RecipeSchema);
+module.exports = mongoose.model("Recipe", RecipeSchema);

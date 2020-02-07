@@ -10,6 +10,16 @@ export const GET_ALL_RECIPES = gql`
         }
     }
 `;
+/// Search for recipe
+export const SEARCH_RECIPES = gql`
+    query($searchTerm: String) {
+        searchRecipes(searchTerm: $searchTerm) {
+            _id
+            name
+            likes
+        }
+    }
+`;
 //GET A RECIPE BY ID
 export const GET_RECIPE = gql`
     query($_id: ID!) {
