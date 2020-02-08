@@ -1,23 +1,36 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 nav {
-  text-align: center;
-  margin-bottom: 1em;
-  padding-bottom: 0.2em;
-  padding-top: 2em;
-  background-color: #efefef;
+    text-align: center;
+    background-color: #ddc5c5;
 }
 
 nav ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    list-style: none;
+    background-color: rgb(108, 108, 231);
 }
-
+nav li {
+    margin: auto 10px;
+    padding: 5px;
+    background-color: aliceblue;
+    border-radius: 5px;
+}
+nav li:hover {
+    background-color: rgb(68, 89, 206);
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: white;
+}
 .delete-button {
-  color: red;
-  cursor: pointer;
+    color: red;
+    cursor: pointer;
 }
