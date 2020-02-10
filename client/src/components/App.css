@@ -4,33 +4,56 @@
 
 nav {
     text-align: center;
-    background-color: #ddc5c5;
 }
 
 nav ul {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     list-style: none;
-    background-color: rgb(108, 108, 231);
+    margin: 10px auto;
+    text-transform: uppercase;
+    font: 11px system-ui;
 }
-nav li {
-    margin: auto 10px;
-    padding: 5px;
-    background-color: aliceblue;
+nav .nav-button {
+    padding: 11px 30px;
+    border: 1px solid rgb(184, 184, 206);
     border-radius: 5px;
+    margin: auto 10px;
 }
 nav li:hover {
-    background-color: rgb(68, 89, 206);
+    border: 1px solid rgb(1, 1, 15);
+    color: blue;
 }
+
 a {
     text-decoration: none;
+    color: black;
 }
-a:hover {
-    color: white;
-}
+
 .delete-button {
     color: red;
     cursor: pointer;
+}
+.signout-button {
+    margin: 10px;
+}
+
+.add-recipe-container {
+    text-align: center;
+}
+.add-recipe-container .add-recipe-form {
+    margin: auto;
+    text-align: center;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.add-recipe-container .add-recipe-form .button-primary.add {
+    width: 150px;
+    margin: auto;
 }

@@ -58,10 +58,10 @@ class AddRecipe extends React.Component {
                 update={this.updateCache}>
                 {(addRecipe, { data, loading, error }) => {
                     return (
-                        <div className="App">
+                        <div className="add-recipe-container">
                             <h2> Add Recipe</h2>
                             <form
-                                className="form"
+                                className="add-recipe-form"
                                 onSubmit={(event) => this.handleSubmit(event, addRecipe)}>
                                 <input
                                     value={name}
@@ -94,7 +94,7 @@ class AddRecipe extends React.Component {
                                 />
                                 <button
                                     type="submit"
-                                    className="button-primary"
+                                    className="button-primary add"
                                     disabled={loading || this.validateForm()}>
                                     {" "}
                                     Submit

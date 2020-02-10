@@ -14,22 +14,22 @@ const NavBar = ({ session }) => (
 const NavbarAuth = ({ session }) => (
     <Fragment>
         <ul>
-            <li>
-                <NavLink to="/" exact>
-                    Home
-                </NavLink>
-            </li>
-            <li>
-                <NavLink to="/search">Search</NavLink>
-            </li>
-            <li>
-                <NavLink to="/recipe/add">Add Recipe</NavLink>
-            </li>
-            <li>
-                <NavLink to="/profile" exact>
-                    Profile
-                </NavLink>
-            </li>
+            <NavLink className="nav-button" to="/" exact>
+                Home
+            </NavLink>
+
+            <NavLink className="nav-button" to="/search">
+                Search
+            </NavLink>
+
+            <NavLink className="nav-button" to="/recipe/add">
+                Add Recipe
+            </NavLink>
+
+            <NavLink className="nav-button" to="/profile" exact>
+                Profile
+            </NavLink>
+
             <Signout />
         </ul>
         <h4>
@@ -41,26 +41,21 @@ const NavbarAuth = ({ session }) => (
 
 const NavbarUnAuth = () => (
     <ul>
-        <li>
-            <NavLink to="/" exact>
-                Home
-            </NavLink>
-        </li>
-        <li>
-            <NavLink to="/search" exact>
-                Search
-            </NavLink>
-        </li>
-        <li>
-            <NavLink to="/signin" exact>
-                Signin
-            </NavLink>
-        </li>
-        <li>
-            <NavLink to="/signup" exact>
-                Signup
-            </NavLink>
-        </li>
+        <NavLink className="nav-button" to="/" exact>
+            Home
+        </NavLink>
+
+        <NavLink className="nav-button" to="/search" exact>
+            Search
+        </NavLink>
+
+        <NavLink className="nav-button" to="/signin" exact>
+            Signin
+        </NavLink>
+
+        <NavLink className="nav-button" to="/signup" exact>
+            Signup
+        </NavLink>
     </ul>
 );
 
