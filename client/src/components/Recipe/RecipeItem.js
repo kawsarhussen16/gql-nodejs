@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./RecipeItem.style.scss";
 
 const RecipeItem = ({ _id, name, category }) => (
-    <li>
+    <div className="item-container">
         <Link to={`recipes/${_id}`}>
             {" "}
             <h4> {name} </h4>{" "}
@@ -10,7 +11,7 @@ const RecipeItem = ({ _id, name, category }) => (
         <p>
             <strong>{category} </strong>
         </p>
-    </li>
+    </div>
 );
 
 export default RecipeItem;

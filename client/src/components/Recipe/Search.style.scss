@@ -1,0 +1,12 @@
+.search-page {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 80%;
+    .each-result {
+        margin: auto;
+        width: 40vw;
+        list-style: none;
+        border-bottom: 1px dotted pink;
+    }
+}

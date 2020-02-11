@@ -3,7 +3,7 @@ const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-require("dotenv").config({ path: "variable.env" });
+require("dotenv").config({ path: ".env" });
 const bodyParser = require("body-parser");
 const { ApolloServer, makeExecutableSchema } = require("apollo-server-express");
 

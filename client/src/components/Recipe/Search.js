@@ -2,6 +2,8 @@ import React from "react";
 import { ApolloConsumer } from "react-apollo";
 import { SEARCH_RECIPES } from "../../queries/index";
 import { Link } from "react-router-dom";
+import "./Search.style.scss";
+
 class Search extends React.Component {
     state = {
         searchResults: []
@@ -29,17 +31,17 @@ class Search extends React.Component {
                                 this.handleChange(data);
                             }}
                         />
-                        <ul>
+                        <div className="search-page">
                             {searchResults.map((recipe) => (
-                                <li key={recipe._id}>
+                                <div className="each-result" key={recipe._id}>
                                     <Link to={`recipes/${recipe._id}`}>
                                         {" "}
                                         <h4>{recipe.name} </h4>
                                     </Link>
-                                    <p>{recipe.likes}</p>
-                                </li>
+                                    <p>Likes: {recipe.likes}</p>
+                                </div>
                             ))}
-                        </ul>
+                        </div>
                     </div>
                 )}
             </ApolloConsumer>

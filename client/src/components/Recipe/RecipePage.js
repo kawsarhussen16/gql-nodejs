@@ -1,6 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
 import { GET_RECIPE } from "../../queries/index";
+import "./RecipePage.style.scss";
 
 import { withRouter } from "react-router-dom";
 const RecipePage = ({ match }) => {
@@ -21,7 +22,7 @@ const RecipePage = ({ match }) => {
                     username
                 } = data.getRecipe;
                 return (
-                    <div className="App">
+                    <div className="recipe-page-container">
                         <h2>{name} </h2>
                         <p>Category: {category} </p>
                         <p>Description: {description} </p>

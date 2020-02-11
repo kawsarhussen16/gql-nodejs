@@ -5,6 +5,9 @@
 nav {
     text-align: center;
 }
+ul {
+    list-style: none;
+}
 
 nav ul {
     display: flex;
@@ -22,23 +25,17 @@ nav .nav-button {
     border: 1px solid rgb(184, 184, 206);
     border-radius: 5px;
     margin: auto 10px;
+    font-weight: bold;
 }
-nav li:hover {
-    border: 1px solid rgb(1, 1, 15);
-    color: blue;
+nav .nav-button:hover {
+    cursor: pointer;
+    color: white;
+    background-color: black;
 }
 
 a {
     text-decoration: none;
     color: black;
-}
-
-.delete-button {
-    color: red;
-    cursor: pointer;
-}
-.signout-button {
-    margin: 10px;
 }
 
 .add-recipe-container {
