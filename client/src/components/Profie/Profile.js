@@ -1,5 +1,5 @@
 import React from "react";
-
-const Profile = (props) => <div>Profile</div>;
+import UserInfo from "./UserInfo";
+const Profile = ({ session }) => <UserInfo session={session} />;
 
 export default Profile;
