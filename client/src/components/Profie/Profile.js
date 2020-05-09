@@ -1,5 +1,14 @@
 import React from "react";
 import UserInfo from "./UserInfo";
-const Profile = ({ session }) => <UserInfo session={session} />;
+
+import UserRecipes from "./UserRecipes";
+const Profile = ({ session }) => {
+  return (
+    <div className="App">
+      <UserInfo session={session} />
+      <UserRecipes username={session.getCurrentUser.username} />
+    </div>
+  );
+};
 
 export default Profile;
